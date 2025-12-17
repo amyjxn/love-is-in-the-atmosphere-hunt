@@ -107,6 +107,21 @@
       text-align: center;
       color: #9ca3af;
     }
+
+    .code-banner {
+      display: none;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      border-radius: 0.9rem;
+      background: rgba(74, 222, 128, 0.08);
+      border: 1px solid rgba(74, 222, 128, 0.6);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .code-banner strong {
+      font-size: 1.05rem;
+    }
   </style>
 </head>
 <body>
@@ -117,12 +132,35 @@
     <div class="info">
       <p><strong>How it works:</strong></p>
       <ul>
-        <li>Go to each location listed below in Chicago.</li>
+        <li>Go to any one of the locations listed below.</li>
         <li>When you’re nearby, tap <em>“Check My Location”</em>.</li>
-        <li>If you’re close enough, the clue will unlock on this page.</li>
+        <li>If you’re close enough, the clue will unlock and reveal your code.</li>
       </ul>
       <p><strong>Tip:</strong> Make sure location services are ON and you’re using your phone’s browser.</p>
     </div>
+
+    <!-- GLOBAL CODE BANNER (unlocks when ANY clue unlocks) -->
+    <div class="code-banner" id="code-banner">
+      🎉 You’ve unlocked a clue! Your code is:<br />
+      <strong>TJRSUPERFAN</strong><br /><br />
+      Use this code where instructed to claim your Atmosphere After Dark perk.
+    </div>
+
+    <!-- TEST CLUE: AURORA (YOUR CURRENT LOCATION) -->
+    <section class="clue" id="auroraTest">
+      <div class="location-label">Test Clue</div>
+      <h2>Aurora – 251 W Downer Pl</h2>
+      <p>
+        This is a test location so you can try the hunt where you are now.<br />
+        Stand outside near <strong>251 W Downer Place, Aurora, IL 60506</strong>, then tap the button below.
+      </p>
+      <button data-key="auroraTest">Check My Location</button>
+      <div class="status" id="auroraTest-status"></div>
+      <div class="clue-content" id="auroraTest-content">
+        <strong>Unlocked test clue:</strong><br />
+        If you’re reading this, the geolocation is working! Use the code below to simulate what readers will see in Chicago.
+      </div>
+    </section>
 
     <!-- CLUE 1: Navy Pier -->
     <section class="clue" id="navyPier">
@@ -137,7 +175,6 @@
       <div class="clue-content" id="navyPier-content">
         <strong>Unlocked clue:</strong><br />
         Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...
-        <!-- You can add a code word here, like: Code word: NAVY -->
       </div>
     </section>
 
@@ -202,7 +239,6 @@
       <div class="clue-content" id="buckingham-content">
         <strong>Unlocked clue:</strong><br />
         Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.
-        <!-- You could reveal a final ticket link or code here. -->
       </div>
     </section>
 
@@ -213,7 +249,14 @@
 
   <script>
     // Approximate coordinates for each location (latitude, longitude, radius in meters)
+    // NOTE: Aurora test coordinates are approximate; if it doesn't unlock, we can tighten them later.
     const locations = {
+      auroraTest: {
+        name: "Aurora – 251 W Downer Pl",
+        lat: 41.759,      // approximate
+        lon: -88.32,      // approximate
+        radiusMeters: 500 // generous radius so it works while you're nearby
+      },
       navyPier: {
         name: "Navy Pier Ferris Wheel",
         lat: 41.8917,
@@ -271,6 +314,13 @@
       if (statusEl) statusEl.textContent = message;
     }
 
+    function showCodeBanner() {
+      const banner = document.getElementById("code-banner");
+      if (banner) {
+        banner.style.display = "block";
+      }
+    }
+
     function unlockClue(key) {
       const clueEl = document.getElementById(key + "-content");
       const sectionEl = document.getElementById(key);
@@ -280,6 +330,8 @@
       if (sectionEl) {
         sectionEl.classList.add("unlocked");
       }
+      // Any unlocked clue reveals the global code banner
+      showCodeBanner();
     }
 
     function checkLocation(key) {
