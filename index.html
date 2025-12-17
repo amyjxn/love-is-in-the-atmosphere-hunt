@@ -41,9 +41,9 @@
       color: #000;
     }
 
-    .info ul {
+    .info ol {
       padding-left: 1.2rem;
-      margin: 0.25rem 0 0;
+      margin: 0.35rem 0 0;
     }
 
     .clue {
@@ -53,6 +53,14 @@
       margin-bottom: 1rem;
       border: 1px solid rgba(0, 0, 0, 0.15);
       color: #000;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* ⭐ Unlocked Clue Highlight */
+    .clue.unlocked {
+      background: #ffde63 !important;
+      border-color: #e0b400;
+      box-shadow: 0 0 0 2px rgba(224, 180, 0, 0.4);
     }
 
     .location-label {
@@ -70,13 +78,14 @@
       color: #000;
     }
 
+    /* ⭐ Updated button color */
     button {
       border: none;
       border-radius: 999px;
       padding: 0.5rem 1rem;
       font-size: 0.9rem;
       cursor: pointer;
-      background: #ff9a62;
+      background: #ffde63;
       color: #000;
       font-weight: 600;
     }
@@ -107,11 +116,6 @@
       color: #444;
     }
 
-    .clue.unlocked {
-      border-color: #4ade80;
-      box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.3);
-    }
-
     .code-banner {
       display: none;
       margin: 1.5rem 0;
@@ -136,11 +140,12 @@
 
     <div class="info">
       <p><strong>How it works:</strong></p>
-      <ul>
-        <li>Go to any one of the locations listed below.</li>
+      <ol>
+        <li>Go to any ONE of the locations listed below.</li>
         <li>When you’re nearby, tap “Check My Location”.</li>
-        <li>If you’re close enough, the clue will unlock and reveal your code. The first 10 people to use it will receive a free ticket!</li>
-      </ul>
+        <li>If you’re close enough, the clue will unlock and reveal your code.  
+        The first 10 people to use it will receive a free ticket to <strong>Love Is in the Atmosphere @ Adler Planetarium</strong>—a cosmic night for Taylor Jenkins Reid fans!</li>
+      </ol>
     </div>
 
     <!-- GLOBAL CODE BANNER -->
@@ -154,9 +159,7 @@
     <!-- TEST CLUE -->
     <section class="clue" id="auroraTest">
       <div class="location-label">Test Clue – Aurora</div>
-      <p>
-        Stand near <strong>251 W Downer Place, Aurora IL</strong> and tap the button below to test geolocation.
-      </p>
+      <p>Stand near <strong>251 W Downer Place, Aurora IL</strong> and tap the button below to test geolocation.</p>
       <button data-key="auroraTest">Check My Location</button>
       <div class="status" id="auroraTest-status"></div>
       <div class="clue-content" id="auroraTest-content">
@@ -167,9 +170,7 @@
     <!-- CLUE 1 -->
     <section class="clue" id="navyPier">
       <div class="location-label">Clue #1</div>
-      <p>
-        Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...
-      </p>
+      <p>Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...</p>
       <button data-key="navyPier">Check My Location</button>
       <div class="status" id="navyPier-status"></div>
       <div class="clue-content" id="navyPier-content">
@@ -180,9 +181,7 @@
     <!-- CLUE 2 -->
     <section class="clue" id="lincolnParkZoo">
       <div class="location-label">Clue #2</div>
-      <p>
-        Growl, roar, chirp, hiss, croak! Stand outside the entrance that shares a name with our governor. Your free ticket is almost in your paws!
-      </p>
+      <p>Growl, roar, chirp, hiss, croak! Stand outside the entrance that shares a name with our governor. Your free ticket is almost in your paws!</p>
       <button data-key="lincolnParkZoo">Check My Location</button>
       <div class="status" id="lincolnParkZoo-status"></div>
       <div class="clue-content" id="lincolnParkZoo-content">
@@ -193,9 +192,7 @@
     <!-- CLUE 3 -->
     <section class="clue" id="cloudGate">
       <div class="location-label">Clue #3</div>
-      <p>
-        There's never BEAN a more iconic piece of art! When you spot your reflection, you're in the right place.
-      </p>
+      <p>There's never BEAN a more iconic piece of art! When you spot your reflection, you're in the right place.</p>
       <button data-key="cloudGate">Check My Location</button>
       <div class="status" id="cloudGate-status"></div>
       <div class="clue-content" id="cloudGate-content">
@@ -206,9 +203,7 @@
     <!-- CLUE 4 -->
     <section class="clue" id="chicagoTheatre">
       <div class="location-label">Clue #4</div>
-      <p>
-        All the world's a stage! Find the marquee that lights up State Street. When you see the city's name in bright lights, your clue is steps away.
-      </p>
+      <p>All the world's a stage! Find the marquee that lights up State Street. When you see the city's name in bright lights, your clue is steps away.</p>
       <button data-key="chicagoTheatre">Check My Location</button>
       <div class="status" id="chicagoTheatre-status"></div>
       <div class="clue-content" id="chicagoTheatre-content">
@@ -219,9 +214,7 @@
     <!-- CLUE 5 -->
     <section class="clue" id="buckingham">
       <div class="location-label">Clue #5</div>
-      <p>
-        Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.
-      </p>
+      <p>Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.</p>
       <button data-key="buckingham">Check My Location</button>
       <div class="status" id="buckingham-status"></div>
       <div class="clue-content" id="buckingham-content">
@@ -229,9 +222,7 @@
       </div>
     </section>
 
-    <div class="footer">
-      Make sure location services are enabled and try moving closer to each landmark.
-    </div>
+    <div class="footer">Make sure location services are enabled and try moving closer to each landmark.</div>
   </div>
 
   <script>
@@ -247,14 +238,12 @@
     function getDistanceMeters(lat1, lon1, lat2, lon2) {
       const R = 6371e3;
       const toRad = deg => deg * Math.PI / 180;
-      const φ1 = toRad(lat1);
-      const φ2 = toRad(lat2);
-      const Δφ = toRad(lat2 - lat1);
-      const Δλ = toRad(lon2 - lon1);
+      const φ1 = toRad(lat1), φ2 = toRad(lat2);
+      const Δφ = toRad(lat2 - lat1), Δλ = toRad(lon2 - lon1);
       const a =
-        Math.sin(Δφ / 2) ** 2 +
-        Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
-      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        Math.sin(Δφ/2)**2 +
+        Math.cos(φ1)*Math.cos(φ2)*Math.sin(Δλ/2)**2;
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     }
 
     function updateStatus(key, msg) {
@@ -263,30 +252,17 @@
     }
 
     function showCodeBanner() {
-      const banner = document.getElementById("code-banner");
-      if (banner) banner.style.display = "block";
+      document.getElementById("code-banner").style.display = "block";
     }
 
     function unlockClue(key) {
-      const content = document.getElementById(key + "-content");
-      const section = document.getElementById(key);
-      if (content) content.style.display = "block";
-      if (section) section.classList.add("unlocked");
+      document.getElementById(key + "-content").style.display = "block";
+      document.getElementById(key).classList.add("unlocked");
       showCodeBanner();
     }
 
     function checkLocation(key) {
       const loc = locations[key];
-      if (!loc) {
-        updateStatus(key, "Unknown location.");
-        return;
-      }
-
-      if (!navigator.geolocation) {
-        alert("Location services are not supported in this browser.");
-        return;
-      }
-
       updateStatus(key, "Checking your location…");
 
       navigator.geolocation.getCurrentPosition(
@@ -302,16 +278,11 @@
             unlockClue(key);
             updateStatus(key, "You’re close enough! Clue unlocked.");
           } else {
-            updateStatus(
-              key,
-              "You’re about " + Math.round(d) + " meters away. Move closer and try again."
-            );
+            updateStatus(key, "You’re about " + Math.round(d) +
+              " meters away. Move closer and try again.");
           }
         },
-        err => {
-          console.error(err);
-          updateStatus(key, "Unable to get your location. Please allow access and try again.");
-        }
+        () => updateStatus(key, "Unable to get your location.")
       );
     }
 
@@ -323,4 +294,5 @@
   </script>
 </body>
 </html>
+
 
