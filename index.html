@@ -141,6 +141,7 @@
     <div class="info">
       <p><strong>How it works:</strong></p>
       <ol>
+        <li>Make sure this page is open in your Internet browser, such as Chrome or Safari.</li>
         <li>Go to any ONE of the locations listed below.</li>
         <li>When you’re nearby, tap “Check My Location”.</li>
         <li>If you’re close enough, the clue will unlock and reveal your code.  
@@ -148,23 +149,13 @@
       </ol>
     </div>
 
+    <!-- COUPON -->
     <div class="code-banner" id="code-banner">
       🎉 You've received a coupon!<br />
       The first 10 winners to use this code on our Eventbrite page will claim a free ticket.<br /><br />
       Your code is:<br />
       <strong>TJRSUPERFAN</strong>
     </div>
-
-    <!-- TEST CLUE -->
-    <section class="clue" id="auroraTest">
-      <div class="location-label">Test Clue – Aurora</div>
-      <p>Stand near <strong>251 W Downer Place, Aurora IL</strong> and tap the button below to test geolocation.</p>
-      <button data-key="auroraTest">Check My Location</button>
-      <div class="status" id="auroraTest-status"></div>
-      <div class="clue-content" id="auroraTest-content">
-        You're in the right place—this is exactly how clues will unlock in Chicago.
-      </div>
-    </section>
 
     <!-- CLUE 1 -->
     <section class="clue" id="navyPier">
@@ -226,7 +217,6 @@
 
   <script>
     const locations = {
-      auroraTest: { lat: 41.759, lon: -88.32, radiusMeters: 500 },
       navyPier: { lat: 41.8917, lon: -87.6079, radiusMeters: 110 },
       lincolnParkZoo: { lat: 41.9209, lon: -87.6323, radiusMeters: 110 },
       cloudGate: { lat: 41.8826, lon: -87.6233, radiusMeters: 110 },
@@ -294,6 +284,3 @@
   </script>
 </body>
 </html>
-
-
-
