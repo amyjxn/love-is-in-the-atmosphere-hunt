@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Atmosphere After Dark – Chicago Clue Hunt</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      background: #050816;
+      color: #f5f5f5;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.25rem 0;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #c7c7d9;
+      margin-bottom: 1.5rem;
+    }
+
+    .info {
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 0.75rem;
+      padding: 0.75rem 1rem;
+    }
+
+    .clue {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 0.9rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .location-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ba2ff;
+      margin-bottom: 0.2rem;
+    }
+
+    .clue p {
+      margin: 0.25rem 0 0.75rem 0;
+      font-size: 0.9rem;
+      color: #ddd;
+    }
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: #ff9a62;
+      color: #1b1224;
+      font-weight: 600;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .clue-content {
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      display: none;
+      font-size: 0.9rem;
+      color: #f8f8ff;
+    }
+
+    .clue.unlocked {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.3);
+    }
+
+    .status {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #9ca3af;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #9ca3af;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Atmosphere After Dark</h1>
+    <div class="subtitle">Chicago IRL Clue Hunt</div>
+
+    <div class="info">
+      <p><strong>How it works:</strong></p>
+      <ul>
+        <li>Go to each location listed below in Chicago.</li>
+        <li>When you’re nearby, tap <em>“Check My Location”</em>.</li>
+        <li>If you’re close enough, the clue will unlock on this page.</li>
+      </ul>
+      <p><strong>Tip:</strong> Make sure location services are ON and you’re using your phone’s browser.</p>
+    </div>
+
+    <!-- CLUE 1: Navy Pier -->
+    <section class="clue" id="navyPier">
+      <div class="location-label">Clue #1</div>
+      <h2>Navy Pier Ferris Wheel</h2>
+      <p>
+        Head toward the Ferris wheel that touches the sky. Once you're in the area at Navy Pier,
+        tap the button below to unlock your clue.
+      </p>
+      <button data-key="navyPier">Check My Location</button>
+      <div class="status" id="navyPier-status"></div>
+      <div class="clue-content" id="navyPier-content">
+        <strong>Unlocked clue:</strong><br />
+        Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...
+        <!-- You can add a code word here, like: Code word: NAVY -->
+      </div>
+    </section>
+
+    <!-- CLUE 2: Lincoln Park Zoo -->
+    <section class="clue" id="lincolnParkZoo">
+      <div class="location-label">Clue #2</div>
+      <h2>Lincoln Park Zoo – Pritzker Entrance</h2>
+      <p>
+        Make your way to the Lincoln Park Zoo entrance that shares a name with the governor.
+        When you’re outside the gate, tap the button to unlock your clue.
+      </p>
+      <button data-key="lincolnParkZoo">Check My Location</button>
+      <div class="status" id="lincolnParkZoo-status"></div>
+      <div class="clue-content" id="lincolnParkZoo-content">
+        <strong>Unlocked clue:</strong><br />
+        Growl, roar, chirp, hiss, croak! Stand outside the entrance that shares a name with our governor. Your free ticket is almost in your paws!
+      </div>
+    </section>
+
+    <!-- CLUE 3: Cloud Gate -->
+    <section class="clue" id="cloudGate">
+      <div class="location-label">Clue #3</div>
+      <h2>Cloud Gate (The Bean)</h2>
+      <p>
+        Go to Millennium Park and find the reflective sculpture everyone photographs.
+        When you can see yourself in it, tap below to unlock your clue.
+      </p>
+      <button data-key="cloudGate">Check My Location</button>
+      <div class="status" id="cloudGate-status"></div>
+      <div class="clue-content" id="cloudGate-content">
+        <strong>Unlocked clue:</strong><br />
+        There's never BEAN a more iconic piece of art! When you spot your reflection, your next step is close at hand.
+      </div>
+    </section>
+
+    <!-- CLUE 4: Chicago Theatre -->
+    <section class="clue" id="chicagoTheatre">
+      <div class="location-label">Clue #4</div>
+      <h2>Chicago Theatre</h2>
+      <p>
+        Find the marquee that lights up State Street with the city’s name in bright lights.
+        Once you’re there, tap to unlock your clue.
+      </p>
+      <button data-key="chicagoTheatre">Check My Location</button>
+      <div class="status" id="chicagoTheatre-status"></div>
+      <div class="clue-content" id="chicagoTheatre-content">
+        <strong>Unlocked clue:</strong><br />
+        All the world's a stage! When you see “CHICAGO” shining above you, your clue is just steps away.
+      </div>
+    </section>
+
+    <!-- CLUE 5: Buckingham Fountain -->
+    <section class="clue" id="buckingham">
+      <div class="location-label">Clue #5</div>
+      <h2>Buckingham Fountain</h2>
+      <p>
+        Head to Grant Park and find the fountain that looks like it could spray the stars.
+        When you’re nearby, tap below to unlock your final clue.
+      </p>
+      <button data-key="buckingham">Check My Location</button>
+      <div class="status" id="buckingham-status"></div>
+      <div class="clue-content" id="buckingham-content">
+        <strong>Unlocked clue:</strong><br />
+        Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.
+        <!-- You could reveal a final ticket link or code here. -->
+      </div>
+    </section>
+
+    <div class="footer">
+      Having trouble? Make sure location services are enabled and try moving closer to each landmark.
+    </div>
+  </div>
+
+  <script>
+    // Approximate coordinates for each location (latitude, longitude, radius in meters)
+    const locations = {
+      navyPier: {
+        name: "Navy Pier Ferris Wheel",
+        lat: 41.8917,
+        lon: -87.6079,
+        radiusMeters: 350
+      },
+      lincolnParkZoo: {
+        name: "Lincoln Park Zoo (Pritzker Entrance)",
+        lat: 41.9209,
+        lon: -87.6323,
+        radiusMeters: 350
+      },
+      cloudGate: {
+        name: "Cloud Gate (The Bean)",
+        lat: 41.8826,
+        lon: -87.6233,
+        radiusMeters: 250
+      },
+      chicagoTheatre: {
+        name: "Chicago Theatre",
+        lat: 41.8854,
+        lon: -87.6278,
+        radiusMeters: 250
+      },
+      buckingham: {
+        name: "Buckingham Fountain",
+        lat: 41.8758,
+        lon: -87.6189,
+        radiusMeters: 350
+      }
+    };
+
+    // Haversine formula to calculate distance between two lat/lon points
+    function getDistanceMeters(lat1, lon1, lat2, lon2) {
+      const R = 6371e3; // metres
+      const toRad = deg => deg * Math.PI / 180;
+
+      const phi1 = toRad(lat1);
+      const phi2 = toRad(lat2);
+      const dPhi = toRad(lat2 - lat1);
+      const dLambda = toRad(lon2 - lon1);
+
+      const a =
+        Math.sin(dPhi / 2) * Math.sin(dPhi / 2) +
+        Math.cos(phi1) * Math.cos(phi2) *
+        Math.sin(dLambda / 2) * Math.sin(dLambda / 2);
+
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      const d = R * c;
+      return d;
+    }
+
+    function updateStatus(key, message) {
+      const statusEl = document.getElementById(key + "-status");
+      if (statusEl) statusEl.textContent = message;
+    }
+
+    function unlockClue(key) {
+      const clueEl = document.getElementById(key + "-content");
+      const sectionEl = document.getElementById(key);
+      if (clueEl) {
+        clueEl.style.display = "block";
+      }
+      if (sectionEl) {
+        sectionEl.classList.add("unlocked");
+      }
+    }
+
+    function checkLocation(key) {
+      const loc = locations[key];
+      if (!loc) return;
+
+      if (!navigator.geolocation) {
+        alert("Location is not supported in this browser. Please enable location services.");
+        return;
+      }
+
+      updateStatus(key, "Checking your location…");
+
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const userLat = pos.coords.latitude;
+          const userLon = pos.coords.longitude;
+          const distance = getDistanceMeters(userLat, userLon, loc.lat, loc.lon);
+
+          if (distance <= loc.radiusMeters) {
+            unlockClue(key);
+            updateStatus(key, "You’re close enough! Clue unlocked.");
+          } else {
+            updateStatus(
+              key,
+              "You’re about " + Math.round(distance) + " meters away. Move closer and try again."
+            );
+          }
+        },
+        err => {
+          console.error(err);
+          updateStatus(key, "Could not get your location. Please allow access and try again.");
+          alert("Could not get your location. Please allow location access in your browser settings.");
+        }
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll("button[data-key]");
+      buttons.forEach(btn => {
+        const key = btn.getAttribute("data-key");
+        btn.addEventListener("click", () => checkLocation(key));
+      });
+    });
+  </script>
+</body>
+</html>
