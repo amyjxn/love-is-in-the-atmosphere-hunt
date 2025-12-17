@@ -25,17 +25,11 @@
       color: #000;
     }
 
-    h2 {
-      font-size: 1.2rem;
-      margin: 0 0 0.25rem 0;
-      color: #000;
-    }
-
     .subtitle {
       text-align: center;
       font-size: 0.95rem;
-      color: #000;
       margin-bottom: 1.5rem;
+      color: #000;
     }
 
     .info {
@@ -65,14 +59,8 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #000;
       margin-bottom: 0.2rem;
       font-weight: bold;
-    }
-
-    .clue p {
-      margin: 0.25rem 0 0.75rem 0;
-      font-size: 0.9rem;
       color: #000;
     }
 
@@ -100,11 +88,6 @@
       color: #000;
     }
 
-    .clue.unlocked {
-      border-color: #4ade80;
-      box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.3);
-    }
-
     .status {
       margin-top: 0.5rem;
       font-size: 0.85rem;
@@ -116,6 +99,11 @@
       font-size: 0.8rem;
       text-align: center;
       color: #444;
+    }
+
+    .clue.unlocked {
+      border-color: #4ade80;
+      box-shadow: 0 0 0 1px rgba(74, 222, 128, 0.3);
     }
 
     .code-banner {
@@ -145,28 +133,26 @@
       <ul>
         <li>Go to any one of the locations listed below.</li>
         <li>When you’re nearby, tap “Check My Location”.</li>
-        <li>If you’re close enough, the clue will unlock and reveal your code. The first ten people to use it will receive a free ticket!</li>
+        <li>If you’re close enough, the clue will unlock and reveal your code. The first 10 people to use it will receive a free ticket!</li>
       </ul>
     </div>
 
     <!-- GLOBAL CODE BANNER -->
     <div class="code-banner" id="code-banner">
-      🎉 You've received a coupon!<br />
-      If you're one of the first 10 winners, you'll receive a free ticket.<br /><br />
-      Your code is:<br />
+      🎉 You've received a coupon!  
+      <br>The first 10 winners to use this code on our Eventbrite page will claim a free ticket.
+      <br><br>Your code is:<br>
       <strong>TJRSUPERFAN</strong>
     </div>
 
     <!-- TEST CLUE -->
     <section class="clue" id="auroraTest">
       <div class="location-label">Test Clue</div>
-      <p>
-        Stand near <strong>251 W Downer Place, Aurora, IL 60506</strong> and tap the button below to test geolocation.
-      </p>
+      <p>Stand near <strong>251 W Downer Place, Aurora IL</strong> and tap the button below to test geolocation.</p>
       <button data-key="auroraTest">Check My Location</button>
       <div class="status" id="auroraTest-status"></div>
       <div class="clue-content" id="auroraTest-content">
-        <strong>Unlocked test clue:</strong><br />
+        <strong>Unlocked test clue:</strong><br>
         The geolocation system is working! Your code has been revealed above.
       </div>
     </section>
@@ -221,55 +207,28 @@
       </div>
     </section>
 
-    <div class="footer">
-      Make sure location services are enabled and try moving closer to each landmark.
-    </div>
+    <div class="footer">Make sure location services are enabled and try moving closer to each landmark.</div>
   </div>
 
   <script>
-    // Approximate coordinates for each location (latitude, longitude, radius in meters)
     const locations = {
-      auroraTest: {
-        lat: 41.759,
-        lon: -88.32,
-        radiusMeters: 500 // keep generous for your personal testing
-      },
-      navyPier: {
-        lat: 41.8917,
-        lon: -87.6079,
-        radiusMeters: 110
-      },
-      lincolnParkZoo: {
-        lat: 41.9209,
-        lon: -87.6323,
-        radiusMeters: 110
-      },
-      cloudGate: {
-        lat: 41.8826,
-        lon: -87.6233,
-        radiusMeters: 110
-      },
-      chicagoTheatre: {
-        lat: 41.8854,
-        lon: -87.6278,
-        radiusMeters: 110
-      },
-      buckingham: {
-        lat: 41.8758,
-        lon: -87.6189,
-        radiusMeters: 110
-      }
+      auroraTest: { lat: 41.759, lon: -88.32, radiusMeters: 500 },
+      navyPier: { lat: 41.8917, lon: -87.6079, radiusMeters: 110 },
+      lincolnParkZoo: { lat: 41.9209, lon: -87.6323, radiusMeters: 110 },
+      cloudGate: { lat: 41.8826, lon: -87.6233, radiusMeters: 110 },
+      chicagoTheatre: { lat: 41.8854, lon: -87.6278, radiusMeters: 110 },
+      buckingham: { lat: 41.8758, lon: -87.6189, radiusMeters: 110 }
     };
 
     function getDistanceMeters(lat1, lon1, lat2, lon2) {
       const R = 6371e3;
       const toRad = deg => deg * Math.PI / 180;
-      const φ1 = toRad(lat1), φ2 = toRad(lat2);
-      const Δφ = toRad(lat2 - lat1), Δλ = toRad(lon2 - lon1);
-      const a =
-        Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
-        Math.cos(φ1) * Math.cos(φ2) *
-        Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+      const φ1 = toRad(lat1);
+      const φ2 = toRad(lat2);
+      const Δφ = toRad(lat2 - lat1);
+      const Δλ = toRad(lon2 - lon1);
+      const a = Math.sin(Δφ / 2) ** 2 +
+                Math.cos(φ1) * Math.cos(φ2) * Math.sin(Δλ / 2) ** 2;
       return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
@@ -279,34 +238,27 @@
     }
 
     function showCodeBanner() {
-      const banner = document.getElementById("code-banner");
-      if (banner) banner.style.display = "block";
+      document.getElementById("code-banner").style.display = "block";
     }
 
     function unlockClue(key) {
-      const clueEl = document.getElementById(key + "-content");
-      const sectionEl = document.getElementById(key);
-      if (clueEl) clueEl.style.display = "block";
-      if (sectionEl) sectionEl.classList.add("unlocked");
+      document.getElementById(key + "-content").style.display = "block";
+      document.getElementById(key).classList.add("unlocked");
       showCodeBanner();
     }
 
     function checkLocation(key) {
       const loc = locations[key];
-      if (!loc) return;
-
-      if (!navigator.geolocation) {
-        alert("Location support is not available in this browser. Please enable location services.");
-        return;
-      }
-
       updateStatus(key, "Checking your location…");
 
       navigator.geolocation.getCurrentPosition(
         pos => {
-          const userLat = pos.coords.latitude;
-          const userLon = pos.coords.longitude;
-          const d = getDistanceMeters(userLat, userLon, loc.lat, loc.lon);
+          const d = getDistanceMeters(
+            pos.coords.latitude,
+            pos.coords.longitude,
+            loc.lat,
+            loc.lon
+          );
 
           if (d <= loc.radiusMeters) {
             unlockClue(key);
@@ -317,9 +269,7 @@
           }
         },
         err => {
-          console.error(err);
-          updateStatus(key, "Unable to get your location. Please allow access and try again.");
-          alert("Could not get your location. Please allow location access in your browser settings.");
+          updateStatus(key, "Unable to get your location.");
         }
       );
     }
