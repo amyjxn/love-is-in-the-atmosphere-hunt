@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Atmosphere After Dark – Chicago Clue Hunt</title>
+  <title>Love is in the Atmosphere – Chicago Clue Hunt</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       margin: 0;
       padding: 1.5rem;
-      background: #050816;
-      color: #f5f5f5;
+      background: #b0cfe8;
+      color: #000;
     }
 
     .page {
@@ -22,48 +22,58 @@
       font-size: 1.8rem;
       text-align: center;
       margin-bottom: 0.25rem;
+      color: #000;
     }
 
     h2 {
       font-size: 1.2rem;
       margin: 0 0 0.25rem 0;
+      color: #000;
     }
 
     .subtitle {
       text-align: center;
       font-size: 0.95rem;
-      color: #c7c7d9;
+      color: #000;
       margin-bottom: 1.5rem;
     }
 
     .info {
       font-size: 0.9rem;
       margin-bottom: 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.05);
       border-radius: 0.75rem;
       padding: 0.75rem 1rem;
+      color: #000;
+    }
+
+    .info ul {
+      padding-left: 1.2rem;
+      margin: 0.25rem 0 0;
     }
 
     .clue {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(0, 0, 0, 0.04);
       border-radius: 0.9rem;
       padding: 1rem;
       margin-bottom: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      color: #000;
     }
 
     .location-label {
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: #9ba2ff;
+      color: #000;
       margin-bottom: 0.2rem;
+      font-weight: bold;
     }
 
     .clue p {
       margin: 0.25rem 0 0.75rem 0;
       font-size: 0.9rem;
-      color: #ddd;
+      color: #000;
     }
 
     button {
@@ -73,7 +83,7 @@
       font-size: 0.9rem;
       cursor: pointer;
       background: #ff9a62;
-      color: #1b1224;
+      color: #000;
       font-weight: 600;
     }
 
@@ -84,10 +94,10 @@
     .clue-content {
       margin-top: 0.75rem;
       padding-top: 0.75rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      border-top: 1px dashed rgba(0, 0, 0, 0.2);
       display: none;
       font-size: 0.9rem;
-      color: #f8f8ff;
+      color: #000;
     }
 
     .clue.unlocked {
@@ -98,14 +108,14 @@
     .status {
       margin-top: 0.5rem;
       font-size: 0.85rem;
-      color: #9ca3af;
+      color: #444;
     }
 
     .footer {
       margin-top: 2rem;
       font-size: 0.8rem;
       text-align: center;
-      color: #9ca3af;
+      color: #444;
     }
 
     .code-banner {
@@ -113,10 +123,11 @@
       margin: 1.5rem 0;
       padding: 1rem;
       border-radius: 0.9rem;
-      background: rgba(74, 222, 128, 0.08);
+      background: rgba(74, 222, 128, 0.15);
       border: 1px solid rgba(74, 222, 128, 0.6);
       font-size: 0.95rem;
       text-align: center;
+      color: #000;
     }
 
     .code-banner strong {
@@ -126,211 +137,157 @@
 </head>
 <body>
   <div class="page">
-    <h1>Atmosphere After Dark</h1>
+    <h1>Love is in the Atmosphere</h1>
     <div class="subtitle">Chicago IRL Clue Hunt</div>
 
     <div class="info">
       <p><strong>How it works:</strong></p>
       <ul>
         <li>Go to any one of the locations listed below.</li>
-        <li>When you’re nearby, tap <em>“Check My Location”</em>.</li>
-        <li>If you’re close enough, the clue will unlock and reveal your code.</li>
+        <li>When you’re nearby, tap “Check My Location”.</li>
+        <li>If you’re close enough, the clue will unlock and reveal your code. The first ten people to use it will receive a free ticket!</li>
       </ul>
-      <p><strong>Tip:</strong> Make sure location services are ON and you’re using your phone’s browser.</p>
     </div>
 
-    <!-- GLOBAL CODE BANNER (unlocks when ANY clue unlocks) -->
+    <!-- GLOBAL CODE BANNER -->
     <div class="code-banner" id="code-banner">
-      🎉 You’ve unlocked a clue! Your code is:<br />
-      <strong>TJRSUPERFAN</strong><br /><br />
-      Use this code where instructed to claim your Atmosphere After Dark perk.
+      🎉 You've received a coupon!<br />
+      If you're one of the first 10 winners, you'll receive a free ticket.<br /><br />
+      Your code is:<br />
+      <strong>TJRSUPERFAN</strong>
     </div>
 
-    <!-- TEST CLUE: AURORA (YOUR CURRENT LOCATION) -->
+    <!-- TEST CLUE -->
     <section class="clue" id="auroraTest">
       <div class="location-label">Test Clue</div>
-      <h2>Aurora – 251 W Downer Pl</h2>
       <p>
-        This is a test location so you can try the hunt where you are now.<br />
-        Stand outside near <strong>251 W Downer Place, Aurora, IL 60506</strong>, then tap the button below.
+        Stand near <strong>251 W Downer Place, Aurora, IL 60506</strong> and tap the button below to test geolocation.
       </p>
       <button data-key="auroraTest">Check My Location</button>
       <div class="status" id="auroraTest-status"></div>
       <div class="clue-content" id="auroraTest-content">
         <strong>Unlocked test clue:</strong><br />
-        If you’re reading this, the geolocation is working! Use the code below to simulate what readers will see in Chicago.
+        The geolocation system is working! Your code has been revealed above.
       </div>
     </section>
 
-    <!-- CLUE 1: Navy Pier -->
+    <!-- CLUE 1 -->
     <section class="clue" id="navyPier">
       <div class="location-label">Clue #1</div>
-      <h2>Navy Pier Ferris Wheel</h2>
-      <p>
-        Head toward the Ferris wheel that touches the sky. Once you're in the area at Navy Pier,
-        tap the button below to unlock your clue.
-      </p>
       <button data-key="navyPier">Check My Location</button>
       <div class="status" id="navyPier-status"></div>
       <div class="clue-content" id="navyPier-content">
-        <strong>Unlocked clue:</strong><br />
         Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...
       </div>
     </section>
 
-    <!-- CLUE 2: Lincoln Park Zoo -->
+    <!-- CLUE 2 -->
     <section class="clue" id="lincolnParkZoo">
       <div class="location-label">Clue #2</div>
-      <h2>Lincoln Park Zoo – Pritzker Entrance</h2>
-      <p>
-        Make your way to the Lincoln Park Zoo entrance that shares a name with the governor.
-        When you’re outside the gate, tap the button to unlock your clue.
-      </p>
       <button data-key="lincolnParkZoo">Check My Location</button>
       <div class="status" id="lincolnParkZoo-status"></div>
       <div class="clue-content" id="lincolnParkZoo-content">
-        <strong>Unlocked clue:</strong><br />
         Growl, roar, chirp, hiss, croak! Stand outside the entrance that shares a name with our governor. Your free ticket is almost in your paws!
       </div>
     </section>
 
-    <!-- CLUE 3: Cloud Gate -->
+    <!-- CLUE 3 -->
     <section class="clue" id="cloudGate">
       <div class="location-label">Clue #3</div>
-      <h2>Cloud Gate (The Bean)</h2>
-      <p>
-        Go to Millennium Park and find the reflective sculpture everyone photographs.
-        When you can see yourself in it, tap below to unlock your clue.
-      </p>
       <button data-key="cloudGate">Check My Location</button>
       <div class="status" id="cloudGate-status"></div>
       <div class="clue-content" id="cloudGate-content">
-        <strong>Unlocked clue:</strong><br />
-        There's never BEAN a more iconic piece of art! When you spot your reflection, your next step is close at hand.
+        There's never BEAN a more iconic piece of art! When you spot your reflection, you're in the right place.
       </div>
     </section>
 
-    <!-- CLUE 4: Chicago Theatre -->
+    <!-- CLUE 4 -->
     <section class="clue" id="chicagoTheatre">
       <div class="location-label">Clue #4</div>
-      <h2>Chicago Theatre</h2>
-      <p>
-        Find the marquee that lights up State Street with the city’s name in bright lights.
-        Once you’re there, tap to unlock your clue.
-      </p>
       <button data-key="chicagoTheatre">Check My Location</button>
       <div class="status" id="chicagoTheatre-status"></div>
       <div class="clue-content" id="chicagoTheatre-content">
-        <strong>Unlocked clue:</strong><br />
-        All the world's a stage! When you see “CHICAGO” shining above you, your clue is just steps away.
+        All the world's a stage! Find the marquee that lights up State Street. When you see the city's name in bright lights, your clue is steps away.
       </div>
     </section>
 
-    <!-- CLUE 5: Buckingham Fountain -->
+    <!-- CLUE 5 -->
     <section class="clue" id="buckingham">
       <div class="location-label">Clue #5</div>
-      <h2>Buckingham Fountain</h2>
-      <p>
-        Head to Grant Park and find the fountain that looks like it could spray the stars.
-        When you’re nearby, tap below to unlock your final clue.
-      </p>
       <button data-key="buckingham">Check My Location</button>
       <div class="status" id="buckingham-status"></div>
       <div class="clue-content" id="buckingham-content">
-        <strong>Unlocked clue:</strong><br />
         Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.
       </div>
     </section>
 
     <div class="footer">
-      Having trouble? Make sure location services are enabled and try moving closer to each landmark.
+      Make sure location services are enabled and try moving closer to each landmark.
     </div>
   </div>
 
   <script>
     // Approximate coordinates for each location (latitude, longitude, radius in meters)
-    // NOTE: Aurora test coordinates are approximate; if it doesn't unlock, we can tighten them later.
     const locations = {
       auroraTest: {
-        name: "Aurora – 251 W Downer Pl",
-        lat: 41.759,      // approximate
-        lon: -88.32,      // approximate
-        radiusMeters: 500 // generous radius so it works while you're nearby
+        lat: 41.759,
+        lon: -88.32,
+        radiusMeters: 500 // keep generous for your personal testing
       },
       navyPier: {
-        name: "Navy Pier Ferris Wheel",
         lat: 41.8917,
         lon: -87.6079,
-        radiusMeters: 350
+        radiusMeters: 110
       },
       lincolnParkZoo: {
-        name: "Lincoln Park Zoo (Pritzker Entrance)",
         lat: 41.9209,
         lon: -87.6323,
-        radiusMeters: 350
+        radiusMeters: 110
       },
       cloudGate: {
-        name: "Cloud Gate (The Bean)",
         lat: 41.8826,
         lon: -87.6233,
-        radiusMeters: 250
+        radiusMeters: 110
       },
       chicagoTheatre: {
-        name: "Chicago Theatre",
         lat: 41.8854,
         lon: -87.6278,
-        radiusMeters: 250
+        radiusMeters: 110
       },
       buckingham: {
-        name: "Buckingham Fountain",
         lat: 41.8758,
         lon: -87.6189,
-        radiusMeters: 350
+        radiusMeters: 110
       }
     };
 
-    // Haversine formula to calculate distance between two lat/lon points
     function getDistanceMeters(lat1, lon1, lat2, lon2) {
-      const R = 6371e3; // metres
+      const R = 6371e3;
       const toRad = deg => deg * Math.PI / 180;
-
-      const phi1 = toRad(lat1);
-      const phi2 = toRad(lat2);
-      const dPhi = toRad(lat2 - lat1);
-      const dLambda = toRad(lon2 - lon1);
-
+      const φ1 = toRad(lat1), φ2 = toRad(lat2);
+      const Δφ = toRad(lat2 - lat1), Δλ = toRad(lon2 - lon1);
       const a =
-        Math.sin(dPhi / 2) * Math.sin(dPhi / 2) +
-        Math.cos(phi1) * Math.cos(phi2) *
-        Math.sin(dLambda / 2) * Math.sin(dLambda / 2);
-
-      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-      const d = R * c;
-      return d;
+        Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+        Math.cos(φ1) * Math.cos(φ2) *
+        Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+      return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     }
 
-    function updateStatus(key, message) {
-      const statusEl = document.getElementById(key + "-status");
-      if (statusEl) statusEl.textContent = message;
+    function updateStatus(key, msg) {
+      const el = document.getElementById(key + "-status");
+      if (el) el.textContent = msg;
     }
 
     function showCodeBanner() {
       const banner = document.getElementById("code-banner");
-      if (banner) {
-        banner.style.display = "block";
-      }
+      if (banner) banner.style.display = "block";
     }
 
     function unlockClue(key) {
       const clueEl = document.getElementById(key + "-content");
       const sectionEl = document.getElementById(key);
-      if (clueEl) {
-        clueEl.style.display = "block";
-      }
-      if (sectionEl) {
-        sectionEl.classList.add("unlocked");
-      }
-      // Any unlocked clue reveals the global code banner
+      if (clueEl) clueEl.style.display = "block";
+      if (sectionEl) sectionEl.classList.add("unlocked");
       showCodeBanner();
     }
 
@@ -339,7 +296,7 @@
       if (!loc) return;
 
       if (!navigator.geolocation) {
-        alert("Location is not supported in this browser. Please enable location services.");
+        alert("Location support is not available in this browser. Please enable location services.");
         return;
       }
 
@@ -349,31 +306,27 @@
         pos => {
           const userLat = pos.coords.latitude;
           const userLon = pos.coords.longitude;
-          const distance = getDistanceMeters(userLat, userLon, loc.lat, loc.lon);
+          const d = getDistanceMeters(userLat, userLon, loc.lat, loc.lon);
 
-          if (distance <= loc.radiusMeters) {
+          if (d <= loc.radiusMeters) {
             unlockClue(key);
             updateStatus(key, "You’re close enough! Clue unlocked.");
           } else {
-            updateStatus(
-              key,
-              "You’re about " + Math.round(distance) + " meters away. Move closer and try again."
-            );
+            updateStatus(key, "You’re about " + Math.round(d) +
+              " meters away. Move closer and try again.");
           }
         },
         err => {
           console.error(err);
-          updateStatus(key, "Could not get your location. Please allow access and try again.");
+          updateStatus(key, "Unable to get your location. Please allow access and try again.");
           alert("Could not get your location. Please allow location access in your browser settings.");
         }
       );
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      const buttons = document.querySelectorAll("button[data-key]");
-      buttons.forEach(btn => {
-        const key = btn.getAttribute("data-key");
-        btn.addEventListener("click", () => checkLocation(key));
+      document.querySelectorAll("button[data-key]").forEach(btn => {
+        btn.addEventListener("click", () => checkLocation(btn.dataset.key));
       });
     });
   </script>
