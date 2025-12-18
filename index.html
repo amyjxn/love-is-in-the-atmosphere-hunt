@@ -14,7 +14,10 @@
       font-size: 18px;
     }
 
-    .page { max-width: 800px; margin: 0 auto; }
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+    }
 
     h1 {
       font-size: 2rem;
@@ -33,23 +36,31 @@
     .info {
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      background: rgba(0,0,0,0.05);
+      background: rgba(0, 0, 0, 0.05);
       border-radius: 0.75rem;
       padding: 0.75rem 1rem;
+      color: #000;
     }
 
-    .info ol { padding-left: 1.2rem; margin: 0.5rem 0 0; }
-
-    .clue {
-      background: rgba(0,0,0,0.04);
-      border-radius: 0.9rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid rgba(0,0,0,0.15);
+    .info ol {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0 0;
       font-size: 1.1rem;
     }
 
-    .clue.unlocked { border-color: #4ade80; }
+    .clue {
+      background: rgba(0, 0, 0, 0.04);
+      border-radius: 0.9rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      color: #000;
+      font-size: 1.1rem;
+    }
+
+    .clue.unlocked {
+      border-color: #4ade80;
+    }
 
     .location-label {
       font-size: 1rem;
@@ -57,6 +68,13 @@
       letter-spacing: 0.08em;
       margin-bottom: 0.4rem;
       font-weight: bold;
+      color: #000;
+    }
+
+    .clue p {
+      margin: 0.25rem 0 0.75rem 0;
+      font-size: 1.1rem;
+      color: #000;
     }
 
     button {
@@ -66,23 +84,33 @@
       font-size: 1.1rem;
       cursor: pointer;
       background: #ffde63;
-      font-weight: 600;
       color: #000;
+      font-weight: 600;
+    }
+
+    button:active {
+      transform: scale(0.97);
     }
 
     .clue-content {
       margin-top: 0.75rem;
       padding-top: 0.75rem;
-      border-top: 1px dashed rgba(0,0,0,0.2);
+      border-top: 1px dashed rgba(0, 0, 0, 0.2);
       display: none;
+      font-size: 1.1rem;
+      color: #000;
     }
 
-    .status { margin-top: 0.5rem; font-size: 1rem; color: #444; }
+    .status {
+      margin-top: 0.5rem;
+      font-size: 1rem;
+      color: #444;
+    }
 
     .footer {
       margin-top: 2rem;
-      text-align: center;
       font-size: 1rem;
+      text-align: center;
       color: #444;
     }
 
@@ -93,5 +121,220 @@
       border-radius: 0.9rem;
       background: #ffde63;
       border: 2px solid #e0b400;
-      font-size: 1.1r
+      font-size: 1.1rem;
+      text-align: center;
+      color: #000;
+      box-shadow: 0 0 0 2px rgba(224, 180, 0, 0.4);
+    }
 
+    .code-banner strong {
+      font-size: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Love is in the Atmosphere</h1>
+    <div class="subtitle">Chicago IRL Clue Hunt</div>
+
+    <div class="info">
+      <p><strong>How it works:</strong></p>
+      <ol>
+        <li>Make sure this page is open in your Internet browser, such as Chrome or Safari.</li>
+        <li>Go to any ONE of the locations listed below.</li>
+        <li>When you’re nearby, tap “Check My Location”.</li>
+        <li>If you’re close enough, the clue will unlock and reveal your code.
+          The first 10 people to use it will receive a free ticket to <strong>Love Is in the Atmosphere @ Adler Planetarium</strong>—a cosmic night for Taylor Jenkins Reid fans!
+        </li>
+      </ol>
+    </div>
+
+    <!-- COUPON -->
+    <div class="code-banner" id="code-banner">
+      🎉 You've received a coupon!<br />
+      The first 10 winners to use this code on our Eventbrite page will claim a free ticket.<br /><br />
+      Your code is:<br />
+      <strong>TJRSUPERFAN</strong>
+    </div>
+
+    <!-- TEST CLUE -->
+    <section class="clue" id="auroraTest">
+      <div class="location-label">Test Clue – Aurora</div>
+      <p>Stand near <strong>251 W Downer Place, Aurora IL</strong> and tap the button below to test geolocation.</p>
+      <button data-key="auroraTest">Check My Location</button>
+      <div class="status" id="auroraTest-status"></div>
+      <div class="clue-content" id="auroraTest-content">
+        You're in the right place—this is exactly how clues will unlock in Chicago.
+      </div>
+    </section>
+
+    <!-- CLUE 1 -->
+    <section class="clue" id="navyPier">
+      <div class="location-label">Clue #1</div>
+      <p>Look for the wheel that touches the sky—the one you can see from half the city. Your clue is nearby, if you give the area a quick spin...</p>
+      <button data-key="navyPier">Check My Location</button>
+      <div class="status" id="navyPier-status"></div>
+      <div class="clue-content" id="navyPier-content">
+        You're in the right spot for Clue #1!
+      </div>
+    </section>
+
+    <!-- CLUE 2 -->
+    <section class="clue" id="lincolnParkZoo">
+      <div class="location-label">Clue #2</div>
+      <p>Growl, roar, chirp, hiss, croak! Stand outside the entrance that shares a name with our governor. Your free ticket is almost in your paws!</p>
+      <button data-key="lincolnParkZoo">Check My Location</button>
+      <div class="status" id="lincolnParkZoo-status"></div>
+      <div class="clue-content" id="lincolnParkZoo-content">
+        You're in the right spot for Clue #2!
+      </div>
+    </section>
+
+    <!-- CLUE 3 -->
+    <section class="clue" id="cloudGate">
+      <div class="location-label">Clue #3</div>
+      <p>There's never BEAN a more iconic piece of art! When you spot your reflection, you're in the right place.</p>
+      <button data-key="cloudGate">Check My Location</button>
+      <div class="status" id="cloudGate-status"></div>
+      <div class="clue-content" id="cloudGate-content">
+        You're in the right spot for Clue #3!
+      </div>
+    </section>
+
+    <!-- CLUE 4 -->
+    <section class="clue" id="chicagoTheatre">
+      <div class="location-label">Clue #4</div>
+      <p>All the world's a stage! Find the marquee that lights up State Street. When you see the city's name in bright lights, your clue is steps away.</p>
+      <button data-key="chicagoTheatre">Check My Location</button>
+      <div class="status" id="chicagoTheatre-status"></div>
+      <div class="clue-content" id="chicagoTheatre-content">
+        You're in the right spot for Clue #4!
+      </div>
+    </section>
+
+    <!-- CLUE 5 -->
+    <section class="clue" id="buckingham">
+      <div class="location-label">Clue #5</div>
+      <p>Is that a whale? No, but it spouts like one! Near this monument in Grant Park, your search comes full circle.</p>
+      <button data-key="buckingham">Check My Location</button>
+      <div class="status" id="buckingham-status"></div>
+      <div class="clue-content" id="buckingham-content">
+        You're in the right spot for Clue #5!
+      </div>
+    </section>
+
+    <div class="footer">
+      Make sure location services are enabled and try moving closer to each landmark.
+    </div>
+  </div>
+
+  <script>
+    const locations = {
+      auroraTest: { lat: 41.759, lon: -88.32, radiusMeters: 500 },
+      navyPier: { lat: 41.8917, lon: -87.6079, radiusMeters: 110 },
+      lincolnParkZoo: { lat: 41.9209, lon: -87.6323, radiusMeters: 110 },
+      cloudGate: { lat: 41.8826, lon: -87.6233, radiusMeters: 110 },
+      chicagoTheatre: { lat: 41.8854, lon: -87.6278, radiusMeters: 110 },
+      buckingham: { lat: 41.8758, lon: -87.6189, radiusMeters: 110 }
+    };
+
+    // Haversine in meters
+    function getDistanceMeters(lat1, lon1, lat2, lon2) {
+      var R = 6371000; // earth radius in meters
+      function toRad(deg) { return deg * Math.PI / 180; }
+
+      var phi1 = toRad(lat1);
+      var phi2 = toRad(lat2);
+      var dPhi = toRad(lat2 - lat1);
+      var dLambda = toRad(lon2 - lon1);
+
+      var a =
+        Math.sin(dPhi / 2) * Math.sin(dPhi / 2) +
+        Math.cos(phi1) * Math.cos(phi2) *
+        Math.sin(dLambda / 2) * Math.sin(dLambda / 2);
+
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    // Format meters as feet, or miles if > 1320 ft
+    function formatDistance(meters) {
+      var feet = meters * 3.28084;
+      if (feet > 1320) {
+        var miles = feet / 5280;
+        return miles.toFixed(2) + " miles";
+      }
+      return Math.round(feet) + " feet";
+    }
+
+    function updateStatus(key, msg) {
+      var el = document.getElementById(key + "-status");
+      if (el) { el.textContent = msg; }
+    }
+
+    function showCodeBanner() {
+      var banner = document.getElementById("code-banner");
+      if (banner) { banner.style.display = "block"; }
+    }
+
+    function unlockClue(key) {
+      var content = document.getElementById(key + "-content");
+      var section = document.getElementById(key);
+      if (content) { content.style.display = "block"; }
+      if (section) { section.classList.add("unlocked"); }
+      showCodeBanner();
+    }
+
+    function checkLocation(key) {
+      var loc = locations[key];
+      if (!loc) { return; }
+
+      updateStatus(key, "Checking your location (may take up to 30 seconds)...");
+
+      if (!navigator.geolocation) {
+        updateStatus(key, "Geolocation is not supported by this browser.");
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        function (pos) {
+          var meters = getDistanceMeters(
+            pos.coords.latitude,
+            pos.coords.longitude,
+            loc.lat,
+            loc.lon
+          );
+          var displayDist = formatDistance(meters);
+
+          if (meters <= loc.radiusMeters) {
+            unlockClue(key);
+            updateStatus(key, "You're close enough! Clue unlocked.");
+          } else {
+            updateStatus(
+              key,
+              "You're about " + displayDist + " away. Move closer and try again."
+            );
+          }
+        },
+        function () {
+          updateStatus(
+            key,
+            "Unable to get your location. Please allow access and try again."
+          );
+        }
+      );
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var buttons = document.querySelectorAll("button[data-key]");
+      for (var i = 0; i < buttons.length; i++) {
+        (function (btn) {
+          btn.addEventListener("click", function () {
+            checkLocation(btn.getAttribute("data-key"));
+          });
+        })(buttons[i]);
+      }
+    });
+  </script>
+</body>
+</html>
